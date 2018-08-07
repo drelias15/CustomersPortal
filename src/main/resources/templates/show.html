@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Customers Portal</title>
+</head>
+<body>
+<a href="/">Show All Customers</a><br/>
+Title: <span th:text="${customer.title}"></span><br/>
+First Name: <span th:text="${customer.firstName}"></span><br/>
+Last Name: <span th:text="${customer.lastName}"></span><br/>
+Street Address: <span th:text="${customer.street}"></span><br/>
+City:<span th:text="${customer.city}"></span><br/>
+State: <span th:text="${customer.state}"></span><br/>
+ZipCode: <span th:text="${customer.zipCode}"></span><br/>
+Email: <span th:text="${customer.email}"></span><br/>
+Job Tilte: <span th:text="${customer.position}"></span><br/>
+Company: <span th:text="${customer.company}"></span><br/>
+<a th:href="@{/delete/{id}(id=${customer.id})}">Delete this Customer</a>
+</body>
+</html>

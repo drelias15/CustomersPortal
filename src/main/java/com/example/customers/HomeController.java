@@ -4,10 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -52,4 +50,14 @@ public class HomeController {
         customerRepository.deleteById(id);
         return "redirect:/";
     }
+    @PostMapping("/search")
+    public String searchCustomer(@Valid Customer customer, String lastName, Model model, BindingResult result){
+        if (!result.hasErrors()) {
+            model.addAttribute("customers", customerRepository.findByLastName(lastName));
+            return "list";
+        }
+        model.addAttribute("customers", customerRepository.findByLastName(lastName));
+        return "list";
+    }
+
 }

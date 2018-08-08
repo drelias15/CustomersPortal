@@ -6,5 +6,5 @@ import java.util.ArrayList;
 
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
 
-    ArrayList<Customer> findByLastName(String name);
+    ArrayList<Customer> findByFirstNameAndLastName(String first, String last );
 }

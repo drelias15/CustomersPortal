@@ -5,25 +5,7 @@
     <title>Customers Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"/>
-    <style>
-        input[type=text] {
-            width: 50px;
-            box-sizing: border-box;
-            border: 2px solid #ccc;
-            border-radius: 4px;
-            font-size: 10px;
-            background-color: white;
-            background-position: 10px 10px;
-            background-repeat: no-repeat;
-            padding: 12px 20px 12px 40px;
-            -webkit-transition: width 0.4s ease-in-out;
-            transition: width 0.4s ease-in-out;
-        }
 
-        input[type=text]:focus {
-            width: 50%;
-        }
-    </style>
 </head>
 <body>
 <div class="container">
@@ -32,8 +14,11 @@
         <p><a class="btn btn-primary btn-lg" href="/add" role="button">Add a Customer </a>
     <div class="search-container">
     <form action="/search" method="post">
-        <input type="text" placeholder="Search customer..." name="search" float="right">
+        <h4>Search customers</h4>
+        <input type="text" placeholder="First name" name="search" float="right"></br>
+        <input type="text" placeholder="Last Name" name="search2" float="right"></br>
         <button type="submit" class="btn btn-default">Submit</button>
+        <a class="btn btn-default btn-lg" href="/" role="button">Go to customers list </a>
     </form>
     </div>
 </div>

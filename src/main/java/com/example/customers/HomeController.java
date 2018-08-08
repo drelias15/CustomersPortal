@@ -15,12 +15,12 @@ public class HomeController {
     CustomerRepository customerRepository;
 
     @RequestMapping("/")
-    public String listCourse(Model model){
+    public String listCustomers(Model model){
         model.addAttribute("customers", customerRepository.findAll());
         return "list";
     }
     @GetMapping("/add")
-    public String courseForm(Model model){
+    public String customerForm(Model model){
         model.addAttribute("customer", new Customer());
         return "customerform";
     }
@@ -34,29 +34,25 @@ public class HomeController {
         return "redirect:/";
     }
     @RequestMapping("/detail/{id}")
-    public String showCourse(@PathVariable("id") long id, Model model){
+    public String showCustomer(@PathVariable("id") long id, Model model){
         model.addAttribute("customer", customerRepository.findById(id).get());
         return "show";
     }
 
     @RequestMapping("/update/{id}")
-    public String updateCourse(@PathVariable("id") long id, Model model){
+    public String updateCustomer(@PathVariable("id") long id, Model model){
         model.addAttribute("customer", customerRepository.findById(id).get());
         return "customerform";
     }
 
     @RequestMapping("/delete/{id}")
-    public String delCourse(@PathVariable("id") long id){
+    public String delCustomer(@PathVariable("id") long id){
         customerRepository.deleteById(id);
         return "redirect:/";
     }
     @PostMapping("/search")
-    public String searchCustomer(@Valid Customer customer, String lastName, Model model, BindingResult result){
-        if (!result.hasErrors()) {
-            model.addAttribute("customers", customerRepository.findByLastName(lastName));
-            return "list";
-        }
-        model.addAttribute("customers", customerRepository.findByLastName(lastName));
+    public String searchCustomer(@RequestParam("search") String search, @RequestParam("search2") String search2, Model model){
+        model.addAttribute("customers", customerRepository.findByFirstNameAndLastName(search, search2));
         return "list";
     }
 
